@@ -1,23 +1,26 @@
 using System;
 
-interface IMovable
+class Animal
 {
-    void Move();
-}
-
-class Car : IMovable
-{
-    public void Move()
+    public virtual void MakeSound()
     {
-        Console.WriteLine("Car is moving");
+        Console.WriteLine("Some generic sound");
     }
 }
 
-class Bicycle : IMovable
+class Dog : Animal
 {
-    public void Move()
+    public override void MakeSound()
     {
-        Console.WriteLine("Bicycle is moving");
+        Console.WriteLine("Bark");
+    }
+}
+
+class Cat : Animal
+{
+    public override void MakeSound()
+    {
+        Console.WriteLine("Meow");
     }
 }
 
@@ -25,10 +28,12 @@ class Program
 {
     static void Main()
     {
-        IMovable car = new Car();
-        IMovable bicycle = new Bicycle();
+        Animal genericAnimal = new Animal();
+        Animal dog = new Dog();
+        Animal cat = new Cat();
 
-        car.Move();
-        bicycle.Move();
+        genericAnimal.MakeSound();
+        dog.MakeSound();
+        cat.MakeSound();
     }
 }
